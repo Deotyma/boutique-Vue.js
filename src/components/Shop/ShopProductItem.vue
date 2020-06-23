@@ -1,6 +1,6 @@
 <template>
   <div class="w-25 p-3 product-container">
-      <div class="d-flex flex-row justify-content-center">
+      <div class="d-flex flex-row justify-content-between">
           <img style="height:150px;" :src="product.img">
       </div>
       <div>
@@ -11,16 +11,23 @@
           <p>{{product.description}}</p>
       </div>
       <div>
-          <span>{{product.price}}</span>
-          <button class="btn btn-primary btn-sm float-right">Commander</button>
+          <span>{{product.price}}€</span>
+          <button @click="addProductToCart" class="btn btn-primary btn-sm float-right">Commander</button>
       </div>
       
   </div>
 </template>
 
 <script>
+import {eventBus} from '../../main';
+
 export default {
-  props: ['product']
+  props: ['product'],
+  methods:{
+    addProductToCart() {
+        eventBus.addProductToCart({...this.product});
+        }
+    }
 }
 </script>
 

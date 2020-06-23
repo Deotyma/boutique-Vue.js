@@ -62,21 +62,21 @@ export const eventBus = new Vue({
                 price: 1700
             }
         ],
-        cart: [{
-                id: '7',
-                img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.TQ8r9tNr4Q4F_7ULjR9zOwHaE6%26pid%3DApi&f=1',
-                title: 'Lenovo',
-                description: 'Prtit Pinky pour ta mère. Elle va être ravie.',
-                price: 800
-            },
-            {
-                id: '8',
-                img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DaJTtDdWsJ8OOpg-cL4JHQHaE7%26pid%3DApi&f=1',
-                title: 'MacBook',
-                description: 'Un ordinateur qu\'il faut  essayer ou moins une fois dans la vie. Ideal pour les programmmeurs.',
-                price: 1700
-            }
+        cart: [
+
         ]
+    },
+    methods: {
+        addProductToCart(product) {
+            if (!this.cart.map(i => i.id).includes(product.id)) {
+                this.cart = [...this.cart, product];
+                this.$emit('update:cart', this.cart);
+            }
+        },
+        removeItemFromCart(item) {
+            this.cart = this.cart.slice().filter(i => i.id !== item.id);
+            this.$emit('update:cart', this.cart);
+        }
     }
 })
 
