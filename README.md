@@ -1,3 +1,5 @@
+Projet de e-commerce réalisé dans le cadre de formation en Vue.js avec Dyma
+
 # boutique
 
 ## Project setup
