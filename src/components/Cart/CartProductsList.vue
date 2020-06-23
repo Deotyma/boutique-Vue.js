@@ -2,7 +2,10 @@
   <div class="d-flex flex-column flex-wrap p-1">
     <h5 class="border-bottom pb-3">Le panier</h5>
     <cart-product-item v-for="item in cart" :key="item.id" :item="item"></cart-product-item>
-    <hr class="w-100">
+      <template v-if ="cart.length">
+        <hr  class="w-100">
+        <span>Total: {{total}}€</span>
+      </template>
   </div>
 </template>
 
@@ -12,7 +15,15 @@ export default {
   components: {
       CartProductItem
   },
-  props: ['cart']
+  props: ['cart'],
+  computed:{
+    total(){
+      return this.cart.reduce((acc, v)=>{
+        acc += v.price;
+        return acc;
+      }, 0)
+    }
+  }
 }
 </script>
 
