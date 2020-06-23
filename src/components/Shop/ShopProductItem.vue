@@ -20,16 +20,7 @@
 
 <script>
 export default {
-  data(){
-    return {
-        product: {
-            img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.a3cTF2kZNwANt9pgP_19WgHaF3%26pid%3DApi&f=1',
-            title: 'MacBook',
-            description: 'Incroyablement fin et léger, le MacBook Air monte encore en gamme.',
-            price: '1500€'
-        }    
-    }
-  }
+  props: ['product']
 }
 </script>
 
